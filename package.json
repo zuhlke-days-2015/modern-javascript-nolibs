@@ -1,0 +1,18 @@
+{
+  "name": "modern-javascript-no-libs",
+  "version": "1.0.0",
+  "description": "modern-javascript-no-libs",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Christian Kohler",
+  "dependencies": {
+    "babel-core": "^5.8.22",
+    "systemjs": "^0.18.10"
+  },
+  "devDependencies": {
+    "http-server": "^0.8.0"
+  }
+}
