@@ -26,18 +26,13 @@ class MoviesView extends HTMLElement {
   
   renderMovie(movie) {
     return `
-      <li class="movie__item">
-        <figure class="movie__item__inner">
-            <div class="movie__item__inner__img">
-                <a href="${movie.imdbUrl}">
-                    <img src="${movie.omdbImgUrl}" alt="" onerror="this.src='http://placehold.it/343x200'" />
-                </a>
-            </div>
-            <figcaption>
-                <h3><a href="${movie.imdbUrl}">${movie.title}</a></h3>
-                <p>Runtime ${movie.runtimeOriginal}<br />IMDB Votes ${movie.imdbVotes}</p>
-            </figcaption>
-        </figure>
+      <li is="movie-tile"
+        imdb-url="${movie.imdbUrl}"
+        image-url="${movie.omdbImgUrl}"
+        title="${movie.title}"
+        runtime="${movie.runtimeOriginal}"
+        rating="${movie.imdbUrl}"
+        imdb-url="${movie.imdbVotes}">
       </li>
     `;
   }
