@@ -1,4 +1,5 @@
 import MovieApi from '../core/movie-api';
+import MovieTile from '../movie-tile/movie-tile';
 import router from '../router/router';
 
 class MoviesView extends HTMLElement {
@@ -6,9 +7,7 @@ class MoviesView extends HTMLElement {
     let duration = location.hash.split('=').pop();
     
     if(duration) {
-      MovieApi.searchByDuration(duration).then(data => {
-        this.render(data);
-      });
+      MovieApi.searchByDuration(duration).then(this.render);
     } else {
       router.navigate("search");
     }
@@ -31,8 +30,7 @@ class MoviesView extends HTMLElement {
         image-url="${movie.omdbImgUrl}"
         title="${movie.title}"
         runtime="${movie.runtimeOriginal}"
-        rating="${movie.imdbUrl}"
-        imdb-url="${movie.imdbVotes}">
+        rating="${movie.imdbVotes}">
       </li>
     `;
   }

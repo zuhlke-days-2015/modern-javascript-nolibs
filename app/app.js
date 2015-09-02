@@ -1,8 +1,18 @@
 import RouterView from './router/router-view';
+import SearchView from './search/search';
+import MoviesView from './movies/movies';
+import router from './router/router';
 
 class AppRoot extends HTMLElement {
   createdCallback() {
     this.render();
+    
+    router.config([
+      { route: "search",  component: SearchView },
+      { route: "movies",  component: MoviesView }
+    ]);
+
+    router.navigate("search");
   }
   
   render() {
