@@ -7,7 +7,7 @@ class MoviesView extends HTMLElement {
     let duration = location.hash.split('=').pop();
     
     if(duration) {
-      MovieApi.searchByDuration(duration).then(this.render);
+      MovieApi.searchByDuration(duration).then(data => this.render(data));
     } else {
       router.navigate("search");
     }
