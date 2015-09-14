@@ -7,10 +7,12 @@ class AppRoot extends HTMLElement {
   createdCallback() {
     this.render();
     
-    router.config([
-      { route: "search",  component: SearchView },
-      { route: "movies",  component: MoviesView }
-    ]);
+    router.configure(config => {
+        config.map([
+          { route: "search",  component: SearchView },
+          { route: "movies",  component: MoviesView }
+        ]);
+    });
 
     router.navigate("search");
   }
