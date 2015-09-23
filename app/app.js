@@ -1,10 +1,20 @@
 import MoviesView from './movies/movies';
 import SearchView from './search/search';
-
+import RouterView from './router/router-view';
+import router from './router/router';
 
 class AppRoot extends HTMLElement {
     createdCallback() {
         this.render();
+
+        router.configure(config => {
+            config.map([
+                { route: "search",  component: SearchView },
+                { route: "movies",  component: MoviesView }
+            ]);
+        });
+
+        router.navigate("search");
     }
 
     render() {
@@ -24,7 +34,7 @@ class AppRoot extends HTMLElement {
               <p>It's easy, just enter your location and destination and we'll find you a movie that will save you from boredom.</p>
           </div>
       </div>
-      <search-view></search-view>
+      <router-view></router-view>
     `;
     }
 }

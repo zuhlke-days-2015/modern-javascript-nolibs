@@ -1,4 +1,5 @@
 import GoogleApi from '../core/google-api';
+import router from '../router/router';
 
 class SearchView extends HTMLElement {
     createdCallback() {
@@ -16,8 +17,7 @@ class SearchView extends HTMLElement {
         GoogleApi.search(from, to)
         .then(result => {
             var duration = result.routes[0].legs[0].duration.value;
-            console.log(`Duration is ${duration}`);
-            this.innerHTML = `Duration is ${duration}`;
+            router.navigate('movies', { duration: duration });
         }).catch(error => {
             console.log("error");
         });
@@ -60,6 +60,6 @@ class SearchView extends HTMLElement {
     }
 }
 
-document.registerElement('search-view', {
+export default document.registerElement('search-view', {
     prototype: SearchView.prototype
 });

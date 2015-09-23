@@ -3,7 +3,9 @@ import MovieApi from '../core/movie-api';
 
 class MoviesView extends HTMLElement {
     createdCallback() {
-        MovieApi.searchByDuration(3600).then(result => this.render(result));
+        let duration = location.hash.split('=').pop();
+
+        MovieApi.searchByDuration(duration).then(result => this.render(result));
     }
 
     render(data) {
@@ -30,6 +32,6 @@ class MoviesView extends HTMLElement {
     }
 }
 
-document.registerElement('movies-view', {
+export default document.registerElement('movies-view', {
     prototype: MoviesView.prototype
 });
