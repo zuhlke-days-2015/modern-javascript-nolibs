@@ -13,11 +13,14 @@ class SearchView extends HTMLElement {
         let from = this.querySelector('input[name="from"]').value;
         let to = this.querySelector('input[name="to"]').value;
 
-        GoogleApi.search(from, to).then(result => {
+        GoogleApi.search(from, to)
+        .then(result => {
             var duration = result.routes[0].legs[0].duration.value;
             console.log(`Duration is ${duration}`);
+            this.innerHTML = `Duration is ${duration}`;
+        }).catch(error => {
+            console.log("error");
         });
-
     }
 
     render() {

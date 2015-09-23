@@ -1,5 +1,5 @@
 export default class GoogleApi {
-    static search(from, to, success, error) {
+    static search(from, to) {
         var directionsService = new google.maps.DirectionsService();
 
         var request = {
